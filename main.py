@@ -1,5 +1,6 @@
 import time
 import os
+import json
 #intro
 print("It's a new day. It's your time to shine.")
 time.sleep(2)
