@@ -28,12 +28,16 @@ def job_hire_first_time(s):
   job_hire(s)
 
 def job_hire(s):
-  input()
-  print(hired_list)
   os.system('clear')
   input_ask = input("Would you like to hire employees?\ny/n\n")
   if input_ask.lower() == "y":
     while True:
+      print("\nHere are your options.")
+      #loop to print all non-hired employees
+      i = 0
+      while i < len(save.getData("unhired_list", s)):
+        print(save.getData("unhired_list", s)[i])
+        i += 1
       input_hire = input("Which candidates would you like to hire?\n")
       hired_list.append(input_hire)
       print(hired_list)

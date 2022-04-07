@@ -1,1 +1,1 @@
-{"save0": {"name": "save one name"}, "save1": {"name": "1", "balance": 1000, "unhired_list": ["Jeff", "Mark", "Barbara", "Jimothy", "Margaret", "Vanessa", "Roland", "Clarence", "Loretta"], "hired_list": []}}
+{"save0": {"name": "sdf", "balance": 1000, "unhired_list": ["Jeff", "Mark", "Barbara", "Jimothy", "Margaret", "Vanessa", "Roland", "Clarence", "Loretta"], "hired_list": [], "daysUntilEmployeePayday": 14}}
