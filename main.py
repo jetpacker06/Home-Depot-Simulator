@@ -15,7 +15,6 @@ def newSave():
   saves = open("saves.json", "r")
   saves_dict = json.loads(saves.read())
   saves.close()
-  print(get_saves_count.getSavesCount())
   s = "save" + str(get_saves_count.getSavesCount())
   saves_dict[s] = {}
   saves = open("saves.json", "w")
@@ -33,13 +32,11 @@ def newSave():
   
   intro_sequence.intro(s)
 
-#reset saves.json to contain just a single save if the param is true, just for testing purposes
+#reset saves.json to contain an emty json for testing purposes, if param is true
 if 1 == 11:
   saves = open("saves.json", "w")
-  savesBackup = open("savesBackup.txt", "r")
-  saves.write(savesBackup.read())
+  saves.write("{}")
   saves.close()
-  savesBackup.close()
 
 #begin game
 print("Home Depot Simulator\n")

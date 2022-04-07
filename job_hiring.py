@@ -3,8 +3,7 @@ import random
 import time
 import save
 import main_hud
-hired_list = ["Jeff", "Mark", "Barbara", "Jimothy", "Margaret", "Vanessa", "Roland", "Clarence", "Loretta"]
-#we should rework the employee lists to use save data, i say we add two saved objects: a default list and a hired list. each time you hire an employee, that employee name is moved from the first list to the second. if you fire them, they move back to the first.
+import logger
 def job_hire_first_time(s):
   #0 to skip sequence
   multiplier_for_skip = 0
@@ -38,14 +37,29 @@ def job_hire(s):
       while i < len(save.getData("unhired_list", s)):
         print(save.getData("unhired_list", s)[i])
         i += 1
-      input_hire = input("Which candidates would you like to hire?\n")
-      hired_list.append(input_hire)
-      print(hired_list)
+      print("Enter the name of the candidate would like to hire.\n")
+      selected_hire = input()
+      hiredArr = save.getData("hired_list", s)
+      if type(hiredArr) == type(None):
+        hiredArr = []
+      unhiredArr = save.getData("unhired_list", s)
+      selected_hire = selected_hire.capitalize()
+     
+      if selected_hire in unhiredArr:
+        unhiredArr.remove(selected_hire)
+        hiredArr.append(selected_hire)
+        save.saveData("hired_list", hiredArr, s)
+        save.saveData("unhired_list", unhiredArr, s)
       print("Would you like to hire more candidates?\n")
-      input1 = input("y/n")
+      input1 = input("y/n\n")
       if input1.lower() == "y":
         continue
       else:
         break
-  else:
-    main_hud.open(s)
+      main_hud.open(s)
+
+    """
+    while i < len(save.getData("hired_list", s)):
+        print((save.getData("hired_list", s)[i]))
+        i += 1
+    """

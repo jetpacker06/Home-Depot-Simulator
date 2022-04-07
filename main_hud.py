@@ -2,7 +2,7 @@ import json
 import random
 import os
 import save
-#from job_hiring import hired_list
+import job_hiring
 
 def open(s):
   while True:
@@ -24,15 +24,7 @@ def open(s):
           i += 1
       input("Press enter.")
     if action == "2":
-      if len(save.getData("hired_list", s)) == 0:
-        print("You haven't hired any employees! You probably should.")
-      else:
-        print("\nCurrently hired employees:\n")
-        #loop to print all non-hired employees
-        i = 0
-        while i < len(save.getData("hired_list", s)):
-          print(save.getData("hired_list", s)[i])
-          i += 1
+      job_hiring.job_hire(s)
     if action == "3":
       continue
 def payroll(s):

@@ -1,6 +1,6 @@
 import datetime
 def log(input):
-  log = open("log.log", "a")
+  log = open(".log", "a")
   log.write(str(datetime.datetime.now()) + " ")
   log.write(str(input))
   log.write("\n")
