@@ -1,5 +1,4 @@
 import os
-import random
 import time
 import save
 import main_hud
@@ -57,9 +56,40 @@ def job_hire(s):
       else:
         break
       main_hud.open(s)
-
+    
     """
     while i < len(save.getData("hired_list", s)):
         print((save.getData("hired_list", s)[i]))
         i += 1
     """
+def job_fire(s):
+  os.system('clear')
+  input_ask = input("Would you like to fire employees?\ny/n\n")
+  if input_ask.lower() == "y":
+    while True:
+      print("\nHere are your options.")
+      #loop to print all hired employees
+      i = 0
+      while i < len(save.getData("hired_list", s)):
+        print(save.getData("hired_list", s)[i])
+        i += 1
+      print("Enter the name of the candidate would like to fire.\n")
+      selected_fire = input()
+      hiredArr = save.getData("hired_list", s)
+      if type(hiredArr) == type(None):
+        hiredArr = []
+      unhiredArr = save.getData("unhired_list", s)
+      selected_fire = selected_fire.capitalize()
+     
+      if selected_fire in hiredArr:
+        unhiredArr.append(selected_fire)
+        hiredArr.remove(selected_fire)
+        save.saveData("hired_list", hiredArr, s)
+        save.saveData("unhired_list", unhiredArr, s)
+      print("Would you like to fire more candidates?\n")
+      input1 = input("y/n\n")
+      if input1.lower() == "y":
+        continue
+      else:
+        break
+      main_hud.open(s)
