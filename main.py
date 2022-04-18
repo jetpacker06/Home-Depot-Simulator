@@ -6,6 +6,7 @@ import get_saves_count
 import os
 import logger
 import main_hud
+import err
 
 def newSave():
   #new save
@@ -26,6 +27,12 @@ def newSave():
   save.saveData("unhired_list", ["Jeff", "Mark", "Barbara", "Jimothy", "Margaret", "Vanessa", "Roland", "Clarence", "Loretta"], s)
   save.saveData("hired_list", [], s)
   save.saveData("daysUntilEmployeePayday", 14, s)
+  save.saveData("bankrupt", False, s)
+  save.saveData("wood", 0, s)
+  save.saveData("screws", 0, s)
+  save.saveData("pvp_pipes", 0, s)
+  
+  
   
   print("Your new save will be titled " + new_save_name + ".")
   time.sleep(3)

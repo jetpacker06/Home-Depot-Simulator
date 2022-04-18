@@ -3,6 +3,10 @@ import random
 import os
 import save
 import job_hiring
+import inventory
+import minigame
+import pay_employees
+
 
 def open(s):
   while True:
@@ -11,7 +15,7 @@ def open(s):
     print("Your balance is: $" + str(save.getData("balance", s))) 
     #print("Profit: $", profit)
     print("Employee payday is in " + str(save.getData("daysUntilEmployeePayday", s)) + " days.")
-    print("\nWhat would you like to do?\n1. View hired employees.\n2. Hire employees\n3. Fire employees\n4. \n5. Work & end the day")
+    print("\nWhat would you like to do?\n1. View hired employees.\n2. Hire employees\n3. Fire employees\n4. Manage inventory\n5. Work & end the day")
     action = input()
     if action == "1":
       if len(save.getData("hired_list", s)) == 0:
@@ -28,31 +32,12 @@ def open(s):
       job_hiring.job_hire(s)
     if action == "3":
       job_hiring.job_fire(s)
-  #  if action = "4"
-      
+    if action == "4":
+      inventory.inventory(s)
     if action == "5":
-      dayend = input("Are you sure you want to end the day? y/n\n")
-      if dayend == ("y"):
-        days = save.getData("daysUntilEmployeePayday", s)
-        days = int(days) - 1
-        save.saveData("daysUntilEmployeePayday", days, s)
-    if save.getData("daysUntilEmployeePayday", s) == 0:
-      print("\nTime to pay your workers!\n")
-      while True:
-        input_pay = input("How much do you want to pay your employees for the hour? ")
-        if int(input_pay) >= 7:
-          hour_pay = int(input_pay) * random.randint(5, 8)
-          payroll = len(save.getData("hired_list", s)) * hour_pay
-          print("You spent $", payroll, "on your employees!")
-          input()
-          os.system('clear')
-          bal = save.getData("balance", s)
-          save.saveData("balance", bal - payroll, s)
-          save.saveData("daysUntilEmployeePayday", "14", s)
-          break
-        else:
-          print("You have to pay your employees at least $7 an hour.")
-          input()
-          os.system('clear')
-          continue
-        
+      pay_employees.pay(s)
+      #after calculating the payment, play the game, and calculate the profits
+      minigame.play(s)
+#Idk how to make it run once so it will be a constant reminder
+    if save.getData("balance", s) <= 0:
+        input("Uh oh!!! you don't have any money left!!\n Try your best to make a profit by next payday or you're bankrupt!!\n\nPress enter to continue")

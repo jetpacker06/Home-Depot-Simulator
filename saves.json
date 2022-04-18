@@ -1,1 +1,1 @@
-{"save0": {"name": "69", "balance": 461, "unhired_list": [], "hired_list": ["Jeff", "Barbara", "Margaret", "Vanessa", "Roland", "Clarence", "Loretta", "Jimothy", "Mark"], "daysUntilEmployeePayday": "14"}}
+{"save0": {"name": "ababa", "balance": 1000, "unhired_list": ["Jeff", "Mark", "Barbara", "Jimothy", "Margaret", "Vanessa", "Roland", "Loretta"], "hired_list": ["Clarence"], "daysUntilEmployeePayday": 14, "bankrupt": false, "wood": 0, "screws": 0, "pvp_pipes": 0}}
