@@ -6,7 +6,6 @@ import get_saves_count
 import os
 import logger
 import main_hud
-import err
 
 def newSave():
   #new save

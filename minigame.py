@@ -2,7 +2,6 @@ import random
 import save
 import logger
 def play(s):
-  gameList = ["op1", "op2"]
+  gameList = [1, 2, 3, 4, 5]
   choice = random.choice(gameList)
-  print(choice)
-  logger.log(choice)
+  #
