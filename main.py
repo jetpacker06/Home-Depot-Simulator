@@ -6,7 +6,7 @@ import get_saves_count
 import os
 import logger
 import main_hud
-
+  
 def newSave():
   #new save
   #request new name, create new save, create name of new save, move on to intro
@@ -29,23 +29,24 @@ def newSave():
   save.saveData("bankrupt", False, s)
   save.saveData("wood", 0, s)
   save.saveData("screws", 0, s)
-  save.saveData("pvp_pipes", 0, s)
+  save.saveData("pvc_pipes", 0, s)
   
   
   
   print("Your new save will be titled " + new_save_name + ".")
-  time.sleep(3)
+  input("Press Enter to continue.\n")
   
   intro_sequence.intro(s)
 
-#reset saves.json to contain an emty json for testing purposes, if param is true
+#reset saves.json to contain an empty json for testing purposes, if param is true
 if 1 == 11:
   saves = open("saves.json", "w")
   saves.write("{}")
   saves.close()
 
 #begin game
-print("Home Depot Simulator\n")
+print("Home Depot Simulator")
+print("By Jaeden, Cody, and Robert\n")
 aa = input("1. New Game\n2. Load Save\n")
 while (aa != ("1") and aa != ("2")):
   print("Invalid")
@@ -80,6 +81,14 @@ elif aa == "2":
       elif type(int(selected_save)) == type(1):
         if ("save" + str(int(selected_save) - 1)) in saves_list:
           shouldExit = True
-          main_hud.open("save" + str(int(selected_save) - 1))
+          s = "save" + str(int(selected_save) - 1)
+          if save.getData("bankrupt", s):
+            if len(saves_dict) == 1:
+              os.system("clear")
+              print("You are bankrupt in this save bozo.")
+              print("Creating new save...")
+              newSave()
+          else:
+            main_hud.open(s)
         else:
           print("Invalid.")

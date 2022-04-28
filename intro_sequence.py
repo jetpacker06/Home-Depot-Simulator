@@ -2,7 +2,7 @@ import time
 import os
 import job_hiring
 def intro(s):
-  multiForSkip = 0
+  multiForSkip = 1
   os.system('clear')
   print("It's a new day. It's your time to shine.")
   time.sleep(2 * multiForSkip)
@@ -10,7 +10,9 @@ def intro(s):
   time.sleep(2 * multiForSkip)
   print("You've saved up all your money, great!")
   time.sleep(2 * multiForSkip)
-  print("Now it's time to put all your eggs into one basket and take a huge gamble on your future.\nA gamble that comes with a 100% chance of success (in some cases).")
+  print("Now it's time to put all your eggs into one basket and take a huge gamble on your future.")
+  time.sleep(2 * multiForSkip)
+  print("A gamble that comes with a 100% chance of success (in some cases).")
   time.sleep(5 * multiForSkip)
   print("What are we talking about? We're talking about becoming a Home Depot franchisee.")
   time.sleep(3 * multiForSkip)
@@ -22,11 +24,12 @@ def intro(s):
   time.sleep(2 * multiForSkip)
   print("And that means it's safe and lucrative.")
   time.sleep(3 * multiForSkip)
-  print("With your initial investment, you'll receive everything you need to get started: A location, power, and a few shelves.")
+  print("With your initial investment, you'll receive everything you need to get started:\nA location, power, and a few shelves.")
   time.sleep(5 * multiForSkip)
   print("This concludes the help we are legally obligated to provide.")
   time.sleep(3 * multiForSkip)
   print("Your journey begins!\nPress Enter to continue.")
   input()
   os.system('clear')
+  print("We recommend hiring some employees to begin with. No employees means no profit!")
   job_hiring.job_hire_first_time(s)
